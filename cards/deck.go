@@ -53,3 +53,11 @@ func (d deck) saveToFile(fileName string) error {
 	// 0666 -> permission: any one can access the file
 	return ioutil.WriteFile(fileName, d.toByteSlice(), 0666)
 }
+
+func deckFromFile(fileName string) deck {
+	bs, err := ioutil.ReadFile(fileName)
+	if err == nil {
+		return deck(strings.Split(string(bs), ","))
+	}
+	return newDeck()
+}
