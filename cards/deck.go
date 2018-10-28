@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io/ioutil"
+	"strings"
+)
 
 //	Create a new Deck Type Variable
 //	slice of strings
@@ -32,4 +36,20 @@ func deal(d deck, handSize int) (deck, deck) {
 
 	return d[:handSize], d[handSize:]
 
+}
+
+// func (receiver) func_name return_type{}
+
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
+}
+
+func (d deck) toByteSlice() []byte {
+	stringElement := d.toString()
+	return []byte(stringElement)
+}
+
+func (d deck) saveToFile(fileName string) error {
+	// 0666 -> permission: any one can access the file
+	return ioutil.WriteFile(fileName, d.toByteSlice(), 0666)
 }

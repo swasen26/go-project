@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	// var card string = "Ace of Spades"
@@ -11,7 +9,14 @@ func main() {
 	hand, remainingCards := deal(cards, 5)
 
 	hand.print()
-	fmt.Println("----------")
 	remainingCards.print()
 
+	// greet := "Hi there!"
+	// string -> byte slice
+	// fmt.Println([]byte(greet))
+
+	fmt.Println(cards.toString())
+	fmt.Println(cards.toByteSlice())
+
+	cards.saveToFile("my_deck")
 }
