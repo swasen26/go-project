@@ -18,6 +18,8 @@ func main() {
 
 	// cards.saveToFile("my_deck")
 
-	cardsFromFile := deckFromFile("my_decs")
+	cardsFromFile := deckFromFile("my_deck")
+	cardsFromFile.print()
+	cardsFromFile.shuffleDeck()
 	cardsFromFile.print()
 }
